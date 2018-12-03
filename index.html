@@ -1,0 +1,55 @@
+<!-- Basic HTML stuff -->
+<!DOCTYPE html>
+
+<head>
+
+    <title> Random JS sketches loader </title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <!-- p5.js libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js" type="text/javascript"></script>
+
+    <script>
+        //declare sketches links in an Array
+        var urls = [
+            "./sketches/sketch1.js",
+            "./sketches/sketch2.js",
+            "./sketches/sketch3.js",
+            "./sketches/sketch4.js",
+            "./sketches/sketch5.js"
+        ]
+
+        // function to randomly pick one url
+        function getRandomUrl(urls) {
+            var minIndex = 0;
+            var maxIndex = urls.length;
+            var randomIndex = Math.floor(Math.random() * maxIndex);
+            return urls[randomIndex];
+        }
+
+        // create a random script and add it to the head | load the javascript file
+        function createRandomScript() {
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.id = 'mainscript'
+            script.src = randomSelectedUrl;
+            head.appendChild(script);
+        }
+
+        // select and store the random url in a variable
+        var randomSelectedUrl = getRandomUrl(urls);
+        // load the javascript file with a custom function
+        createRandomScript();
+
+    </script>
+</body>
+
+</html>
